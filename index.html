@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratórios — IFPE Paulista</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f6f8;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #009a44;
+      color: white;
+      padding: 20px 32px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 0;
+    }
+
+    .tab-btn {
+      padding: 10px 28px;
+      border: 2px solid #009a44;
+      border-bottom: none;
+      background: #e8f5ee;
+      color: #007a36;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .tab-btn:hover {
+      background: #d0eddc;
+    }
+
+    .tab-btn.active {
+      background: white;
+      color: #009a44;
+      border-color: #009a44;
+    }
+
+    .card {
+      background: white;
+      border: 2px solid #009a44;
+      border-radius: 0 8px 8px 8px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .calendar-panel {
+      display: none;
+    }
+
+    .calendar-panel.active {
+      display: block;
+    }
+
+    .calendar-panel h2 {
+      font-size: 1.1rem;
+      color: #007a36;
+      margin-bottom: 16px;
+    }
+
+    .calendar-panel iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .schedule-link {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 10px 22px;
+      background: #009a44;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+
+    .schedule-link:hover {
+      background: #007a36;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>IFPE Paulista — Laboratórios de Informática</h1>
+    <p>Consulte a disponibilidade e os agendamentos dos laboratórios</p>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showLab('lab2', this)">Laboratório 2</button>
+      <button class="tab-btn" onclick="showLab('lab3', this)">Laboratório 3</button>
+      <button class="tab-btn" onclick="showLab('lab6', this)">Laboratório 6</button>
+    </div>
+
+    <div class="card">
+      <div id="lab2" class="calendar-panel active">
+        <h2>Laboratório 2 <small style="font-size:0.8rem;color:#888">(Térreo)</small></h2>
+        <a class="schedule-link" href="https://calendar.app.google/ftcR1U3n7bKcL6dv7" target="_blank" rel="noopener">Agendar este laboratório</a>
+        <iframe src="https://calendar.google.com/calendar/embed?src=laboratorio.02%40paulista.ifpe.edu.br&ctz=America%2FRecife&mode=WEEK"
+                title="Calendário do Laboratório 2"
+                frameborder="0"
+                scrolling="no"></iframe>
+      </div>
+
+      <div id="lab3" class="calendar-panel">
+        <h2>Laboratório 3 <small style="font-size:0.8rem;color:#888">(Térreo)</small></h2>
+        <a class="schedule-link" href="https://calendar.app.google/1WzB4U5sLZ1tHRmW8" target="_blank" rel="noopener">Agendar este laboratório</a>
+        <iframe src="https://calendar.google.com/calendar/embed?src=laboratorio.03%40paulista.ifpe.edu.br&ctz=America%2FRecife&mode=WEEK"
+                title="Calendário do Laboratório 3"
+                frameborder="0"
+                scrolling="no"></iframe>
+      </div>
+
+      <div id="lab6" class="calendar-panel">
+        <h2>Laboratório 6 <small style="font-size:0.8rem;color:#888">(Primeiro andar)</small></h2>
+        <a class="schedule-link" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ30c5fv1C48Zie1PpnW6E1aPukrUUqNe2fN6qyhqlXqntMCCfKu5a9VCZPUWsNA0YQsRDI-nW1g" target="_blank" rel="noopener">Agendar este laboratório</a>
+        <iframe src="https://calendar.google.com/calendar/embed?src=laboratorio.06%40paulista.ifpe.edu.br&ctz=America%2FRecife&mode=WEEK"
+                title="Calendário do Laboratório 6"
+                frameborder="0"
+                scrolling="no"></iframe>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    IFPE — Instituto Federal de Pernambuco · Campus Paulista
+  </footer>
+
+  <script>
+    function showLab(labId, btn) {
+      document.querySelectorAll('.calendar-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(labId).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
