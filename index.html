@@ -124,6 +124,33 @@
       font-size: 0.8rem;
       color: #888;
     }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 14px 16px;
+      }
+      header h1 {
+        font-size: 1.1rem;
+      }
+      main {
+        margin: 16px auto;
+      }
+      .tab-btn {
+        flex: 1;
+        padding: 10px 6px;
+        font-size: 0.85rem;
+      }
+      .card {
+        padding: 16px;
+      }
+      .calendar-panel iframe {
+        height: 420px;
+      }
+      .schedule-link {
+        display: block;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -181,6 +208,15 @@
       document.getElementById(labId).classList.add('active');
       btn.classList.add('active');
     }
+
+    function applyMobileCalendar() {
+      if (window.innerWidth < 600) {
+        document.querySelectorAll('.calendar-panel iframe').forEach(function(iframe) {
+          iframe.src = iframe.src.replace('mode=WEEK', 'mode=AGENDA');
+        });
+      }
+    }
+    applyMobileCalendar();
   </script>
 
 </body>
